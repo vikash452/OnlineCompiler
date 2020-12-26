@@ -1,0 +1,22 @@
+{
+  "name": "onlinecompiler",
+  "version": "1.0.0",
+  "description": "this is an online compiler with multiple language support",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikash452/OnlineCompiler.git"
+  },
+  "author": "vikash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vikash452/OnlineCompiler/issues"
+  },
+  "homepage": "https://github.com/vikash452/OnlineCompiler#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
