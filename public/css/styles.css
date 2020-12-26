@@ -1,0 +1,45 @@
+#code
+{
+    height: 520px;
+    width: 700px;
+    margin-left: 15px;
+}
+
+#input,#output
+{
+    height: 220px;
+    width: 450px;
+}
+
+#compileCode
+{
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+.inputArea,.outputArea
+{
+    margin-left: 100px;
+    margin-right: 50px;
+}
+
+body
+{
+    background-image: url('../assests/background.jpeg');
+}
+
+.welcomeNote
+{
+    font-family: Arial, Helvetica, cursive;
+    color: aliceblue;
+    font-size: 80px;
+    text-align: center  ;
+}
+
+.languageSelection
+{
+    font-size: 30px;
+    /* margin-bottom: 10px; */
+    font-family: Arial, Helvetica, cursive;
+    color: aliceblue;
+}

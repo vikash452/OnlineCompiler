@@ -1,15 +1,19 @@
+let userCode=document.getElementById('code');
+let userLanguage=document.getElementById('language');
+let userInput=document.getElementById('input');
+let userOutput=document.getElementById('output');
+
 document.getElementById('compileCode').addEventListener('click',()=>{
     console.log("clicked")
-
-    const codeWritten=document.getElementById('code').value;
-    const language=document.getElementById('cars').value;
-    const inputGiven=document.getElementById('input').value;
+    console.log(userLanguage.value)
 
     const data={
-        codeWritten,
-        language:"cpp17",
-        inputGiven,
+        codeWritten:userCode.value,
+        language:userLanguage.value,
+        inputGiven:userInput.value,
     }
+
+    userOutput.value='Running....'
 
     fetch('/compileCode',{
         method:'POST',
@@ -20,41 +24,57 @@ document.getElementById('compileCode').addEventListener('click',()=>{
     })
     .then(res=>res.json())
     .then((res2)=>{
-        /*
-        const proxy = "https://cors-anywhere.herokuapp.com/";
-        const url = "https://api.jdoodle.com/v1/execute";
-
-        fetch(proxy+url,{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify({
-                script: codeWritten,
-                language: "cpp17",
-                versionIndex: "0",
-                stdin: inputGiven,
-                clientId:data.id,
-                clientSecret:data.secret,
-            })
-        })
-        .then(res=>res.json())
-        .then((res2)=>{
-            console.log(res2);
-        })*/
         console.log(res2.output)
+        userOutput.value=res2.output
     })
  
 })
 
-document.getElementById('cars').addEventListener('change',()=>{
-    lang=document.getElementById('cars').value;
-    if(lang==='suz')
+userLanguage.addEventListener('change',()=>{
+    var languageChoosen=userLanguage.value;
+
+    if(languageChoosen === 'cpp17')
     {
-        document.getElementById('code').innerHTML="hey";
+        userCode.value=
+        "#include <iostream>\r\n" +
+        "using namespace std;\r\n" +
+        "\r\n" +
+        "int main() {\r\n" +
+        "// your code goes here\r\n" +
+        "return 0;\r\n" +
+        "}\r\n";
     }
-    else if(lang==='volvo')
+    else if(languageChoosen === 'c')
     {
-        document.getElementById('code').innerHTML="vik";
+        userCode.value=
+        "#include <stdio.h>\r\n" +
+        "\r\n" +
+        "int main(void) {\r\n" +
+        "// your code goes here\r\n" +
+        "return 0;\r\n" +
+        "}\r\n" +
+        "\r\n";
     }
+    else if(languageChoosen === 'python2')
+    {
+        userCode.value="# write your python code here\r\n";
+    }
+    else if(languageChoosen === 'java')
+    {
+        userCode.value=
+        "public class Solution {\r\n" +
+        "    public static void main(String[] args) {\r\n" +
+        "        // Write your code here\r\n" +
+        "    }\r\n" +
+        "}";
+    }
+    else
+    {
+        alert('please select a language')
+    }
+})
+
+document.getElementById('clear').addEventListener('click',()=>{
+    console.log('here')
+    userCode.value="";
 })

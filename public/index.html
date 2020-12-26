@@ -1,18 +1,39 @@
 <html>
+    <head>
+        <link rel='stylesheet' href="./css/styles.css">
+    </head>
     <body>
-        <h1>hello Welcome to the compiler</h1>
-        <textarea id="code"></textarea>
-        <div>
-            <textarea id="input"></textarea>
-            <textarea id="output"></textarea>
+        <h1 class="welcomeNote">Welcome to the compiler</h1>
+        <h2 class="welcomeNote" style="font-size: 60px !important;">Code.Coup.Repeat</h2>
+        <div class="languageSelection">
+            Please select a language:
+            <select name="language" id="language">
+                <option value="null">Select</option>
+                <option value="cpp17">C++</option>
+                <option value="c">C</option>
+                <option value="python2">Python</option>
+                <option value="java">Java</option>
+            </select>
         </div>
-        
 
-        <select name="cars" id="cars">
-            <option name="volvo">volvo</option>
-            <option name="suz">suz</option>
-        </select>
-        <button id="compileCode">Compile</button>
+        <table>
+            <tr>
+                <td>
+                    <textarea id="code"></textarea>
+                    <button id="compileCode">Compile</button>
+                </td>
+                <td>
+                    <div class="inputArea">
+                        <h3 class="languageSelection" style="margin-bottom: 0px; margin-top: -70px;" >Input</h3>
+                        <textarea id="input"></textarea>
+                    </div>
+                    <div class="outputArea">
+                        <h3 class="languageSelection" style="margin-bottom: 0px;">Output</h3>
+                        <textarea id="output"></textarea>
+                    </div>  
+                </td>
+            </tr>
+        </table>
         <script src="js/app.js"></script>
     </body>
 </html>
