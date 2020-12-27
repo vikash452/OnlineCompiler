@@ -44,14 +44,6 @@ app.post('/compileCode',(req,res)=>{
     })
 })
 
-app.get('/getCredentials',(req,res)=>{
-    const credentials={
-        id:process.env.CLIENT_ID,
-        secret:process.env.CLIENT_SECRET
-    }
-    console.log(req.body)
-    res.json(credentials);
-})
 
 app.listen(3000,()=>{
     console.log("server is running on port 3000");

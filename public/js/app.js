@@ -3,17 +3,28 @@ let userLanguage=document.getElementById('language');
 let userInput=document.getElementById('input');
 let userOutput=document.getElementById('output');
 
+var editor=CodeMirror.fromTextArea(document.querySelector('#code'),{
+    lineNumbers:true,
+    tabSize:2,  
+    extraKeys:{'Ctrl-Space':'autocomplete'},
+    matchBrackets:true,
+});
+
+editor.setSize('700','600')
+
 document.getElementById('compileCode').addEventListener('click',()=>{
-    console.log("clicked")
-    console.log(userLanguage.value)
+    // console.log(editor.getValue())
+    // console.log("clicked")
+    // console.log(userLanguage.value)
 
     const data={
-        codeWritten:userCode.value,
+        codeWritten:editor.getValue(),
         language:userLanguage.value,
         inputGiven:userInput.value,
     }
 
     userOutput.value='Running....'
+    document.getElementById('compileCode').disabled=true;
 
     fetch('/compileCode',{
         method:'POST',
@@ -24,8 +35,9 @@ document.getElementById('compileCode').addEventListener('click',()=>{
     })
     .then(res=>res.json())
     .then((res2)=>{
-        console.log(res2.output)
+        console.log(res2)
         userOutput.value=res2.output
+        document.getElementById('compileCode').disabled=false;
     })
  
 })
@@ -35,38 +47,35 @@ userLanguage.addEventListener('change',()=>{
 
     if(languageChoosen === 'cpp17')
     {
-        userCode.value=
-        "#include <iostream>\r\n" +
+        editor.setValue("#include <iostream>\r\n" +
         "using namespace std;\r\n" +
         "\r\n" +
         "int main() {\r\n" +
-        "// your code goes here\r\n" +
-        "return 0;\r\n" +
-        "}\r\n";
+        "\t// your code goes here\r\n" +
+        "\treturn 0;\r\n" +
+        "}\r\n")
     }
     else if(languageChoosen === 'c')
     {
-        userCode.value=
-        "#include <stdio.h>\r\n" +
+        editor.setValue("#include <stdio.h>\r\n" +
         "\r\n" +
         "int main(void) {\r\n" +
-        "// your code goes here\r\n" +
-        "return 0;\r\n" +
+        "\t// your code goes here\r\n" +
+        "\treturn 0;\r\n" +
         "}\r\n" +
-        "\r\n";
+        "\r\n")
     }
     else if(languageChoosen === 'python2')
     {
-        userCode.value="# write your python code here\r\n";
+        editor.setValue("# write your python code here\r\n")
     }
     else if(languageChoosen === 'java')
     {
-        userCode.value=
-        "public class Solution {\r\n" +
+        editor.setValue("public class Solution {\r\n" +
         "    public static void main(String[] args) {\r\n" +
         "        // Write your code here\r\n" +
         "    }\r\n" +
-        "}";
+        "}")
     }
     else
     {
@@ -74,7 +83,3 @@ userLanguage.addEventListener('change',()=>{
     }
 })
 
-document.getElementById('clear').addEventListener('click',()=>{
-    console.log('here')
-    userCode.value="";
-})

@@ -9,12 +9,14 @@
 {
     height: 220px;
     width: 450px;
+    font-size: 20px;
 }
 
 #compileCode
 {
     margin-left: 150px;
-    margin-top: 20px;
+    margin-top: 40px;
+    font-size: 40px;
 }
 
 .inputArea,.outputArea
@@ -42,4 +44,15 @@ body
     /* margin-bottom: 10px; */
     font-family: Arial, Helvetica, cursive;
     color: aliceblue;
+}
+
+.CodeMirror
+{
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.select
+{
+    font-size: 15px;
 }
