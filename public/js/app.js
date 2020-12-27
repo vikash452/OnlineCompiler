@@ -10,7 +10,7 @@ var editor=CodeMirror.fromTextArea(document.querySelector('#code'),{
     matchBrackets:true,
 });
 
-editor.setSize('700','600')
+editor.setSize('800','600')
 
 document.getElementById('compileCode').addEventListener('click',()=>{
     // console.log(editor.getValue())

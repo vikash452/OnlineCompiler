@@ -8,7 +8,7 @@
 #input,#output
 {
     height: 220px;
-    width: 450px;
+    width: 500px;
     font-size: 20px;
 }
 
@@ -21,7 +21,7 @@
 
 .inputArea,.outputArea
 {
-    margin-left: 100px;
+    margin-left: 200px;
     margin-right: 50px;
 }
 
