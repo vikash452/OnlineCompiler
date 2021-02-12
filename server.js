@@ -20,7 +20,7 @@ app.post('/compileCode',(req,res)=>{
     const proxy = "https://cors-anywhere.herokuapp.com/";
     const url = "https://api.jdoodle.com/v1/execute";
 
-    fetch(proxy+url,{
+    fetch(url,{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
